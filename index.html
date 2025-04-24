@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elemental Challenge</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <img src="../assets/visiofund.co.za-....-black.png" alt="">
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+  <div class="carousel-container">
+
+    <!-- Messages -->
+    <div class="message-container">
+      <div class="message message-0">LOOK BEYOND THE ORDINARY</div>
+      <div class="message message-1">YOUR INVESTMENTS, OUR EXPERTISE</div>
+      <div class="message message-2">DISCOVER GROWTH OPPORTUNITIES</div>
+    </div>
+  
+    <!-- Carousel Slides -->
+    <div class="carousel-slide active">
+      <img src="../assets/sergey-pesterev-FRMtK1yfFsY-unsplash.png" alt="Slide 1" />
+    </div>
+    <div class="carousel-slide">
+      <img src="https://visiofund.co.za/wp-content/uploads/2021/10/1.png" alt="Slide 2" />
+    </div>
+    <div class="carousel-slide">
+      <img src="https://visiofund.co.za/wp-content/uploads/2021/09/Mask-Group-231.jpg" alt="Slide 3" />
+    </div>
+  
+    <button id="nextBtn"><img src="./assets/slider-next.svg" alt=""></button>
+  
+    <div class="dots">
+      <img src="./assets/slider-dots.svg" alt="Dots" class="dot dot-0">
+      <img src="./assets/slider-dots.svg" alt="Dots" class="dot dot-1">
+      <img src="./assets/slider-dots.svg" alt="Dots" class="dot dot-2">
+    </div>
+  </div>
+  
+<section>
+<p>Visio is an investment management firm initially founded by Patrice Moyal in 2003. The nimble, highly focused and dynamic team manage assets across listed strategies for a diversified client base that includes some of the world’s largest and most sophisticated investors.</p>
+<img src="./assets/Rectangle 9.png" alt="">
+</section>
+
+<!-- Top Section: Dark Cards -->
+<div class="top-section">
+    <a href="#" class="card">
+      <div class="arrow">&gt;</div>
+      <p>THE VISIO <br>  DIFFERENCE</p>
+    </a>
+    <a href="#" class="card">
+      <div class="arrow">&gt;</div>
+      <p>MEET THE <br> VISIO TEAM</p>
+    </a>
+    <a href="#" class="card">
+      <div class="arrow">&gt;</div>
+      <p>OUR FUNDS AND INVESTMENTS</p>
+    </a>
+  </div>
+  
+  <!-- Bottom Section: Blue Buttons -->
+  <div class="button-grid">
+    <a href="#" class="button">HEDGE FUNDS <span>&gt;</span></a>
+    <a href="#" class="button">UNIT TRUSTS <span>&gt;</span></a>
+    <a href="#" class="button">SEGREGATED MANDATES <span>&gt;</span></a>
+    <a href="#" class="button">AFRICA FUNDS <span>&gt;</span></a>
+    <a href="#" class="button">FUND PERFORMANCE <span>&gt;</span></a>
+    <a href="#" class="button">RISK MANAGEMENT <span>&gt;</span></a>
+  </div>
+  
+
+  <script>
+document.getElementById('hamburger').addEventListener('click', () => {
+  const dropdown = document.querySelector('.dropdown');
+  dropdown.classList.toggle('show');
+});
+
+// Carousel functionality
+const slides = document.querySelectorAll('.carousel-slide');
+const nextBtn = document.getElementById('nextBtn');
+const dots = document.querySelectorAll('.dots img');
+const messages = document.querySelectorAll('.message');
+let currentIndex = 0;
+
+// Function to update the carousel
+function updateCarousel(index) {
+  // Hide all slides, dots, and messages
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active-dot'));
+  messages.forEach(msg => msg.classList.remove('active'));
+
+  // Show selected slide, dot, and message
+  slides[index].classList.add('active');
+  dots[index].classList.add('active-dot');
+  messages[index].classList.add('active');
+}
+
+// Next button logic
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateCarousel(currentIndex);
+});
+
+// Dot click logic
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentIndex = index;
+    updateCarousel(index);
+  });
+});
+
+// Dot styling
+dots.forEach((dot, index) => {
+  const brightness = 0.8 + (index * 0.2); // Adjust increment as needed
+  dot.style.filter = `brightness(${brightness})`;
+});
+
+// Initial state
+updateCarousel(currentIndex);
+
+// Logo growth on scroll top
+const logo = document.querySelector('header img');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY === 0) {
+    logo.classList.add('large');
+  } else {
+    logo.classList.remove('large');
+  }
+});
+
+// Slide in the current message on load
+window.addEventListener('load', () => {
+  if (messages[currentIndex]) {
+    messages[currentIndex].classList.add('active');
+  }
+});
+
+  </script>
+
+</body>
+</html>
