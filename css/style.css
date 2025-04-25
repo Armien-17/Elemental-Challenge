@@ -1,3 +1,4 @@
+/* Global Resets */
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +20,14 @@ body, html {
   align-items: center;
   padding: 2rem;
   background-color: #ffffff;
+  max-width: 1350px;
+  margin: 0 auto;
 }
+
 .nav-links {
   display: flex;
   gap: 20px;
+  max-width: 1350px;
 }
 
 @media (max-width: 768px) {
@@ -43,7 +48,7 @@ body, html {
 }
 
 .logo.large {
-  transform: scale(1.3); /* or adjust as needed */
+  transform: scale(1.3);
 }
 
 .menu-toggle {
@@ -66,6 +71,7 @@ body, html {
   background-color: #fff;
   padding: 1rem;
   border-radius: 5px;
+  max-width: 1350px;
 }
 
 .dropdown.show {
@@ -93,7 +99,7 @@ header img {
 }
 
 header img.large {
-  transform: scale(1.2); /* You can increase this */
+  transform: scale(1.2);
 }
 
 .carousel-banner {
@@ -123,30 +129,31 @@ right: 0;
 background-color: #000000;
 }
 
-.carousel-container {
-position: relative;
-max-width: 1790; /* or your preferred carousel width */
-width: 100%;
-margin: 0 auto;
-z-index: 2; /* Make sure it's above the background bars */
-text-align: center;
-overflow: hidden;
-}
 
+.carousel-container {
+  position: relative;
+  max-width: 1350px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  text-align: center;
+  overflow: hidden;
+}
 
 @media (max-width: 768px) {
   .carousel-container {
     padding: 0 20px;
   }
 }
+
 .carousel-slide {
   display: none;
   font-size: 1.2rem;
-  background-color: transparent; /* 👈 Transparent background */
+  background-color: transparent;
   transition: all 1s ease-in-out;
   position: absolute;
   width: 100%;
-  max-width: 1200px; /* Adjust as needed */
+  max-width: 1350px;
   height: 100%;
   top: 0;
   left: 0;
@@ -155,8 +162,6 @@ overflow: hidden;
   z-index: 2;
   overflow: hidden;
 }
-
-
 
 .carousel-slide.active {
   display: block;
@@ -173,14 +178,13 @@ overflow: hidden;
   display: block;
 }
 
-
 #nextBtn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.0);
   font-size: 70px;
-  right: 100px;
+  right: 1px;
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
   color: #fff;
@@ -188,31 +192,35 @@ overflow: hidden;
   cursor: pointer;
   z-index: 10;
 }
+
 .carousel-container {
-  position: relative; /* Make the carousel container the positioning reference */
+  position: relative;
 }
 
 .message {
-  position: absolute; /* Position it relative to the carousel container */
-  top: 50%; /* Center vertically within the carousel container */
-  left: 0; /* Align it to the left side */
-  transform: translate(0, -50%); /* Adjust for exact vertical center */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
   opacity: 0;
   transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   background-color: rgba(36, 74, 194, 0.9);
   color: white;
   padding: 20px;
-  width: 40%; /* Ensure it takes up a percentage of the carousel container */
-  max-width: 600px; /* Set a maximum width */
-  min-width: 600px; /* Ensure minimum width */
-  text-align: left;
+  width: 40%;
+  max-width: 600px;
+  min-width: 600px;
+  height: 120px;
   z-index: 10;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-size: 2vw;
-  height: 120px; /* Set fixed height */
+
+  /* Center the text */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  text-align: center;      /* optional: center text lines */
 }
-
-
 
 .message.active {
   transform: translate(0, -50%);
@@ -221,9 +229,9 @@ overflow: hidden;
 
 
 .dots {
-  position: absolute; /* Position dots inside the carousel-slide */
-  bottom: 10px; /* Distance from the bottom of the carousel slide */
-  right: 200px; /* Distance from the right side of the carousel slide */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   display: flex;
   gap: 5px;
   z-index: 100;
@@ -232,18 +240,16 @@ overflow: hidden;
 .dot {
   width: 20px;
   height: 20px;
-  background-color: rgba(0, 0, 0, 0.5); /* Default color for dots */
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .dot.active {
-  background-color: #00aaff; /* Highlight active dot */
+  background-color: #00aaff;
 }
 
-
-/* On very small screens */
 @media (max-width: 600px) {
   .message {
     width: 70%;
@@ -252,16 +258,16 @@ overflow: hidden;
     padding: 10px;
   }
 }
+
 section {
   display: flex;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
-  gap: 40px; /* or use responsive spacing */
+  gap: 40px;
   padding: 20px;
-  margin: 0 auto; /* Centers the section */
-  max-width: 1200px; /* or any width value that suits your design */
+  margin: 0 auto;
+  max-width: 1350px;
 }
-
 
 section p {
   font-size: 24px;
@@ -270,10 +276,9 @@ section p {
   font-weight: 300;
   font-family: "Open Sans";
   width: 100%;
-  max-width: 100%; /* prevents exceeding container */
+  max-width: 100%;
   float: none;
 }
-
 
 @media (max-width: 768px) {
   section {
@@ -286,9 +291,6 @@ section p {
     height: auto;
   }
 }
-
-
-
 
 section img {
   max-width: 500px;
@@ -304,7 +306,6 @@ body {
   background: #fff;
 }
 
-
 /* Top Dark Cards */
 .top-section {
   display: flex;
@@ -313,9 +314,9 @@ body {
   gap: 20px;
   padding: 40px 20px;
   flex-wrap: wrap;
-  max-width: 1200px;  /* Sets the maximum width for the section */
-  width: 100%;        /* Ensures it takes up full width of the container */
-  margin: 0 auto;     /* Centers the section horizontally */
+  max-width: 1350px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .container {
@@ -324,8 +325,8 @@ body {
   gap: 20px;
   justify-content: center;
   width: 100%;
-  max-width: 1000px; /* Maximum container width */
-  margin: 0 auto; /* Centers the container */
+  max-width: 1350px;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
@@ -333,11 +334,11 @@ body {
   background-color: #001730;
   color: white;
   padding-left: 30px;
-  flex: 1 1 300px; /* Ensures cards scale and wrap responsively */
+  flex: 1 1 300px;
   position: relative;
-  max-width: 484px; /* Maximum width for each card */
-  width: 100%; /* Cards scale within their maximum width */
-  height: 201px; /* Fixed height for the card */
+  max-width: 484px;
+  width: 100%;
+  height: 201px;
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: left;
@@ -350,32 +351,17 @@ body {
 
 .card:hover {
   background-color: #00224d;
-  transform: scale(1.02); /* Slight scale-up effect on hover */
+  transform: scale(1.02);
 }
-
-
-
-section {
-display: flex;
-align-items: center;
-font-family: 'Open Sans', sans-serif;
-gap: 40px; /* or use responsive spacing */
-padding: 20px;
-margin: 0 auto; /* Centers the section */
-max-width: 1200px; /* or any width value that suits your design */
-}
-
 
 @media (max-width: 768px) {
   .card {
-      flex: 1 1 100%; /* Allow the card to take up 100% of the space on smaller screens */
+    flex: 1 1 100%;
   }
 }
 
-
-
 .card .arrow {
-  width:44px;
+  width: 44px;
   height: 46px;
   font-size: 60px;
   opacity: 0.698;
@@ -385,7 +371,7 @@ max-width: 1200px; /* or any width value that suits your design */
 }
 
 .card p {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -394,7 +380,6 @@ max-width: 1200px; /* or any width value that suits your design */
   transform: translateY(-5px);
 }
 
-/* Optional: Tighter layout on very small screens */
 @media (max-width: 500px) {
   .card {
     max-width: 100%;
@@ -403,76 +388,70 @@ max-width: 1200px; /* or any width value that suits your design */
 
 /* Blue Buttons Grid Centered */
 .button-grid {
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-padding: 20px;
-justify-content: center;
-max-width: 1200px; /* Set max-width for the grid */
-width: 100%;
-margin: 0 auto; /* Centers the grid horizontally */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 20px 10% 20px;
+  justify-content: center;
+  max-width: 1350px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 @media (max-width: 600px) {
-.button-grid {
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-}
-.button {
-  width: 100%; /* Make buttons full width on smaller screens */
-  max-width: 230px;
-}
+  .button-grid {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 230px;
+  }
 }
 
 /* Blue Buttons */
 .button {
-background-color: #244ac2;
-color: white;
-width: 230px;
-height: 38px;
-display: flex;
-justify-content: space-between; /* Push arrow to the right */
-align-items: center;
-font-weight: 600;
-font-size: 14px;
-padding: 0 12px; /* Add horizontal padding */
-cursor: pointer;
-transition: background 0.3s, transform 0.3s;
-text-decoration: none;
-border: 1px solid #061c2c;
+  background-color: #244ac2;
+  color: white;
+  width: 200px;
+  height: 38px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  text-decoration: none;
+  border: 1px solid #061c2c;
+}
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;       /* Allows buttons to wrap on smaller screens */
+  gap: 10px;              /* Space between buttons */
+  justify-content: flex-start; /* You can use center or space-between too */
+  margin: 20px 0;
 }
 
 .button:hover {
-background-color: #1c3dbb;
-transform: translateY(-3px);
+  background-color: #1c3dbb;
+  transform: translateY(-3px);
 }
 
 .button span {
-margin-left: 10px;
-font-size: 20px;
-color: #2196f3;
-}
-
-/* Responsive stacking for small screens */
-@media (max-width: 600px) {
-.button-grid {
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-}
-
-.button {
-  width: 100%;
-  max-width: 230px;
-}
+  margin-left: 10px;
+  font-size: 20px;
+  color: #2196f3;
 }
 
 .page-container {
-max-width: 1200px; /* Adjust as needed */
-width: 100%;
-margin: 0 auto;
-padding: 0 20px;
-box-sizing: border-box;
-align-items: center;
+  max-width: 1350px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  align-items: center;
 }
