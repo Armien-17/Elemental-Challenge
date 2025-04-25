@@ -96,32 +96,83 @@
     transform: scale(1.2); /* You can increase this */
   }
   
-  
-  /* Carousel Styles */
-  .carousel-container {
-    width: 100vw;
-    margin: 0;
-    text-align: center;
+  .carousel-banner {
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    max-width: 9000px; /* match your site layout width */
+    margin: 0 auto 90px auto;
   }
+  .carousel-banner::before,
+.carousel-banner::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 120px;
+  width: 50%;
+  z-index: 1;
+}
+
+.carousel-banner::before {
+  left: 0;
+  background-color: #244AC2;
+}
+
+.carousel-banner::after {
+  right: 0;
+  background-color: #000000;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 1790; /* or your preferred carousel width */
+  width: 100%;
+  margin: 0 auto;
+  z-index: 2; /* Make sure it's above the background bars */
+  text-align: center;
+  overflow: hidden;
+}
   
+  
+  @media (max-width: 768px) {
+    .carousel-container {
+      padding: 0 20px;
+    }
+  }
   .carousel-slide {
     display: none;
     font-size: 1.2rem;
-    background-color: #f5f5f5;
-    transition: all 0.3s ease-in-out;
+    background-color: transparent; /* 👈 Transparent background */
+    transition: all 1s ease-in-out;
+    position: absolute;
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+    overflow: hidden;
   }
+  
+  
   
   .carousel-slide.active {
     display: block;
+    position: relative;
+    z-index: 8;
   }
   
   .carousel-slide img {
     width: 100%;
+    max-height: 1800px;
     height: auto;
+    margin: auto;
+    object-fit: contain;
     display: block;
   }
+
   
   #nextBtn {
     position: absolute;
@@ -129,7 +180,7 @@
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.0);
     font-size: 70px;
-    right: -50px;
+    right: 100px;
     margin-top: 1rem;
     padding: 0.5rem 1.5rem;
     color: #fff;
@@ -137,24 +188,31 @@
     cursor: pointer;
     z-index: 10;
   }
+  .carousel-container {
+    position: relative; /* Make the carousel container the positioning reference */
+  }
+  
   .message {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-100%, -50%);
+    position: absolute; /* Position it relative to the carousel container */
+    top: 50%; /* Center vertically within the carousel container */
+    left: 0; /* Align it to the left side */
+    transform: translate(0, -50%); /* Adjust for exact vertical center */
     opacity: 0;
     transition: transform 0.7s ease-out, opacity 0.7s ease-out;
     background-color: rgba(36, 74, 194, 0.9);
     color: white;
-    padding: 2vw;
-    width: 40%;
-    max-width: 600px;
-    min-width: 600px;
+    padding: 20px;
+    width: 40%; /* Ensure it takes up a percentage of the carousel container */
+    max-width: 600px; /* Set a maximum width */
+    min-width: 600px; /* Ensure minimum width */
     text-align: left;
     z-index: 10;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     font-size: 2vw;
+    height: 120px; /* Set fixed height */
   }
+  
+  
   
   .message.active {
     transform: translate(0, -50%);
@@ -163,22 +221,26 @@
   
   
   .dots {
-    position: absolute;
-    bottom: 10px;
-    right: 30px;
+    position: absolute; /* Position dots inside the carousel-slide */
+    bottom: 10px; /* Distance from the bottom of the carousel slide */
+    right: 200px; /* Distance from the right side of the carousel slide */
     display: flex;
     gap: 5px;
+    z-index: 100;
   }
   
-  .dots img {
-    transition: filter 0.3s ease;
+  .dot {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Default color for dots */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
   
-  .dots img.active-dot {
-    opacity: 1;
-    filter: brightness(2) !important;
+  .dot.active {
+    background-color: #00aaff; /* Highlight active dot */
   }
-  
   
   
   /* On very small screens */
@@ -194,23 +256,22 @@
     display: flex;
     align-items: center;
     font-family: 'Open Sans', sans-serif;
-    gap: 20px;
+    gap: 40px; /* or use responsive spacing */
     padding: 20px;
-    margin-left: 30px;
-    margin-bottom: 40px; 
+    margin: 0 auto; /* Centers the section */
+    max-width: 1200px; /* or any width value that suits your design */
+}
 
-  }
+
   section p {
-    width: 902px;
-    height: 160px;
     font-size: 24px;
     line-height: 36px;
     color: rgb(6, 28, 44);
     font-weight: 300;
     font-family: "Open Sans";
-    max-width: 800px; 
-    width: 100%;       
-    float: left;
+    width: 100%;
+    max-width: 100%; /* prevents exceeding container */
+    float: none;
   }
   
   
@@ -247,33 +308,70 @@
   /* Top Dark Cards */
   .top-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 20px;
     padding: 40px 20px;
     flex-wrap: wrap;
-
+    max-width: 1200px;  /* Sets the maximum width for the section */
+    width: 100%;        /* Ensures it takes up full width of the container */
+    margin: 0 auto;     /* Centers the section horizontally */
   }
   
-  /* Responsive Card */
-  .card {
-    background-color: #001826;
-    color: white;
-    width: 100%;
-    max-width: 484px;
-    min-width: 280px;
-    flex: 1 1 300px;
-    height: auto;
+  .container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;      /* Align content to the top */
-    align-items: flex-start;          /* Align content to the left */
-    text-align: left;                 /* Left-align the text */
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px; /* Maximum container width */
+    margin: 0 auto; /* Centers the container */
     box-sizing: border-box;
-    transition: background-color 0.3s, transform 0.3s;
-    text-decoration: none;
   }
+  
+  .card {
+    background-color: #001730;
+    color: white;
+    padding-left: 30px;
+    flex: 1 1 300px; /* Ensures cards scale and wrap responsively */
+    position: relative;
+    max-width: 484px; /* Maximum width for each card */
+    width: 100%; /* Cards scale within their maximum width */
+    height: 201px; /* Fixed height for the card */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  
+  .card h2 {
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  
+  .card:hover {
+    background-color: #00224d;
+    transform: scale(1.02); /* Slight scale-up effect on hover */
+  }
+  
+
+
+section {
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  gap: 40px; /* or use responsive spacing */
+  padding: 20px;
+  margin: 0 auto; /* Centers the section */
+  max-width: 1200px; /* or any width value that suits your design */
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 100%; /* Allow the card to take up 100% of the space on smaller screens */
+    }
+}
+
   
   
   .card .arrow {
@@ -303,59 +401,78 @@
     }
   }
   
-  
   /* Blue Buttons Grid Centered */
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  max-width: 1200px; /* Set max-width for the grid */
+  width: 100%;
+  margin: 0 auto; /* Centers the grid horizontally */
+}
+
+@media (max-width: 600px) {
   .button-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    max-width: 100%;
-  }
-  
-  /* Blue Buttons */
-  .button {
-    background-color: #244ac2;
-    color: white;
-    width: 230px;
-    height: 38px;
-    display: flex;
-    justify-content: space-between; /* Push arrow to the right */
+    flex-direction: column;
     align-items: center;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 0 12px; /* Add horizontal padding */
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    text-decoration: none;
-    border: 1px solid #061c2c;
+    padding: 10px;
   }
-  
-  .button:hover {
-    background-color: #1c3dbb;
-    transform: translateY(-3px);
+  .button {
+    width: 100%; /* Make buttons full width on smaller screens */
+    max-width: 230px;
   }
-  
-  .button span {
-    margin-left: 10px;
-    font-size: 20px;
-    color: #2196f3;
+}
+
+/* Blue Buttons */
+.button {
+  background-color: #244ac2;
+  color: white;
+  width: 230px;
+  height: 38px;
+  display: flex;
+  justify-content: space-between; /* Push arrow to the right */
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0 12px; /* Add horizontal padding */
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  text-decoration: none;
+  border: 1px solid #061c2c;
+}
+
+.button:hover {
+  background-color: #1c3dbb;
+  transform: translateY(-3px);
+}
+
+.button span {
+  margin-left: 10px;
+  font-size: 20px;
+  color: #2196f3;
+}
+
+/* Responsive stacking for small screens */
+@media (max-width: 600px) {
+  .button-grid {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
   }
-  
-  /* Responsive stacking for small screens */
-  @media (max-width: 600px) {
-    .button-grid {
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-    }
-  
-    .button {
-      width: 100%;
-      max-width: 230px;
-    }
+
+  .button {
+    width: 100%;
+    max-width: 230px;
   }
-  
-  
-  
+}
+
+.page-container {
+  max-width: 1200px; /* Adjust as needed */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  align-items: center;
+}
